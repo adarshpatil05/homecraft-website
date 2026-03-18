@@ -342,7 +342,7 @@ input{
 .contact-form button:hover{
     background:#1e8449;
 }
-
+  
 /* ===== PAGE TITLE ===== */
 
 h1{
@@ -350,3 +350,57 @@ h1{
     margin-top:20px;
 }
 /* Contact/Login Page Layout */
+/* ===== LOGIN HERO BACKGROUND ===== */
+
+.login-hero{
+    height:100vh;
+    background:url("../images/login-bg.jpg") no-repeat center/cover;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:relative;
+}
+
+/* Dark overlay */
+.overlay{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.5);
+}
+
+/* Center content */
+.login-content{
+    position:relative;
+    text-align:center;
+    color:white;
+}
+
+/* Headings */
+.login-content h1{
+    font-size:32px;
+}
+
+.login-content h2{
+    font-size:28px;
+    margin:10px 0;
+}
+
+.login-content p{
+    margin-bottom:20px;
+}
+
+/* Login box */
+.login-box{
+    background:white;
+    padding:25px;
+    border-radius:10px;
+    width:320px;
+    margin:auto;
+}
+
+
+
+
+
+
