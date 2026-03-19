@@ -1,15 +1,17 @@
-  body{
-    font-family:"Segoe UI",Arial,sans-serif;
-    background-color:#e8f5e9;
-    margin:0;
-    padding:20px;
-}
+/* ================= GLOBAL ================= */
 
-/* Headings */
+body{
+    margin:0;
+    padding:0;
+    font-family:"Segoe UI", Arial, sans-serif;
+    background-color:#e8f5e9;
+}
 
 h1{
     color:#2c3e50;
     font-size:36px;
+    text-align:center;
+    margin-top:20px;
 }
 
 a{
@@ -26,7 +28,7 @@ img{
     border-radius:8px;
 }
 
-/* Buttons */
+/* ================= BUTTONS ================= */
 
 button{
     background-color:#27ae60;
@@ -51,26 +53,11 @@ button:hover{
     align-items:center;
 }
 
-.logo{
-    color:white;
-    font-size:22px;
-    font-weight:bold;
-}
-
-.nav-links a{
-    color:white;
-    font-size:16px;
-}
-
-.nav-links a:hover{
-    color:#2ecc71;
-}
-
-.login-panel a{
+.navbar a{
     color:white;
 }
 
-.login-panel a:hover{
+.navbar a:hover{
     color:#2ecc71;
 }
 
@@ -95,7 +82,6 @@ button:hover{
 .product-card img{
     width:100%;
     height:220px;
-    border-radius:8px;
     object-fit:cover;
 }
 
@@ -103,87 +89,10 @@ button:hover{
     transform:scale(1.05);
 }
 
-/* ================= LOGIN PAGE ================= */
-
-.login-box{
-    background:white;
-    width:300px;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-}
-
-input{
-    width:100%;
-    padding:8px;
-    border-radius:5px;
-    border:1px solid #ccc;
-}
-
-/* ================= CART PAGE ================= */
-
-.cart-container{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-    width:500px;
-    margin-top:20px;
-}
-
-.carrt-item{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:12px 0;
-    border-bottom:1px solid #ddd;
-}
-
-.cart-action{
-    display:flex;
-    gap:10px;
-}
-
-.buy-btn{
-    background:#27ae60;
-    color:white;
-    border:none;
-    padding:6px 12px;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-.buy-btn:hover{
-    background:#1e8449;
-}
-
-.product-name{
-    font-weight:bold;
-}
-
-.product-price{
-    color:#555;
-}
-
-.remove-btn{
-    background:#e74c3c;
-    color:white;
-    padding:6px 12px;
-    border:none;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-.remove-btn:hover{
-    background:#c0392b;
-}
-
-/* ================= HERO SECTION ================= */
+/* ================= HERO ================= */
 
 .hero{
-    background-image:url("../images/hero.jpg");
-    background-size:cover;
-    background-position:center;
+    background:url("../images/hero.jpg") no-repeat center/cover;
     height:350px;
     display:flex;
     align-items:center;
@@ -194,20 +103,16 @@ input{
     padding:40px 60px;
     color:white;
     text-align:center;
-    border-radius:12px;
 }
 
 .hero-text h1{
     color:white;
-    font-weight:bold;
     font-size:42px;
     text-shadow:2px 2px 8px rgba(0,0,0,0.6);
 }
 
 .hero-text p{
-    color:#f1f1f1;
     font-size:22px;
-    font-weight:bold;
 }
 
 .shop-btn{
@@ -223,8 +128,6 @@ input{
 
 .section-title{
     text-align:center;
-    margin-top:20px;
-    margin-bottom:10px;
     font-size:28px;
 }
 
@@ -233,7 +136,6 @@ input{
     justify-content:center;
     gap:30px;
     flex-wrap:wrap;
-    margin-top:10px;
 }
 
 /* ================= FOOTER ================= */
@@ -241,8 +143,8 @@ input{
 .footer{
     background:#2c3e50;
     color:white;
-    margin-top:40px;
     padding:30px;
+    margin-top:40px;
 }
 
 .footer-container{
@@ -267,90 +169,8 @@ input{
     text-align:center;
     margin-top:20px;
 }
-/* ===== LOGIN PAGE LAYOUT ===== */
 
-.contact-container{
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    gap:40px;
-    margin-top:50px;
-    padding:20px;
-    flex-wrap:wrap; /* responsive */
-}
-
-/* ===== FORM BOX ===== */
-
-.contact-form{
-    width:400px;
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 6px 15px rgba(0,0,0,0.1);
-}
-
-/* ===== RIGHT INFO BOX ===== */
-
-.contact-info{
-    width:300px;
-    background:white;
-    padding:25px;
-    border-radius:12px;
-    box-shadow:0 6px 15px rgba(0,0,0,0.1);
-}
-
-/* ===== INPUT FIELDS ===== */
-
-.contact-form input{
-    width:100%;
-    padding:10px;
-    border-radius:6px;
-    border:1px solid #ccc;
-    margin-top:5px;
-    margin-bottom:15px;
-    font-size:14px;
-    transition:0.3s;
-}
-
-/* Focus Effect */
-.contact-form input:focus{
-    border-color:#27ae60;
-    outline:none;
-    box-shadow:0 0 6px rgba(39,174,96,0.4);
-}
-
-/* ===== LABEL ===== */
-
-.contact-form label{
-    font-weight:bold;
-    font-size:14px;
-}
-
-/* ===== BUTTON ===== */
-
-.contact-form button{
-    padding:10px 18px;
-    font-size:14px;
-    border-radius:6px;
-    background:#27ae60;
-    color:white;
-    border:none;
-    cursor:pointer;
-    transition:0.3s;
-}
-
-.contact-form button:hover{
-    background:#1e8449;
-}
-  
-/* ===== PAGE TITLE ===== */
-
-h1{
-    text-align:center;
-    margin-top:20px;
-}
-/* Contact/Login Page Layout */
-/* ===== LOGIN HERO BACKGROUND ===== */
+/* ================= LOGIN HERO PAGE ================= */
 
 .login-hero{
     height:100vh;
@@ -361,15 +181,15 @@ h1{
     position:relative;
 }
 
-/* Dark overlay */
+/* Overlay */
 .overlay{
     position:absolute;
     width:100%;
     height:100%;
-    background:rgba(0,0,0,0.5);
+    background:rgba(0,0,0,0.6);
 }
 
-/* Center content */
+/* Content */
 .login-content{
     position:relative;
     text-align:center;
@@ -379,6 +199,7 @@ h1{
 /* Headings */
 .login-content h1{
     font-size:32px;
+    color:white;
 }
 
 .login-content h2{
@@ -390,13 +211,17 @@ h1{
     margin-bottom:20px;
 }
 
-/* Login box */
+/* Login Box */
 .login-box{
     background:white;
     padding:25px;
     border-radius:10px;
     width:320px;
     margin:auto;
+    box-shadow:0 8px 25px rgba(0,0,0,0.3);
+    display:flex;
+    flex-direction:column;
+    align-items: flex-start;
 }
 /* ================= CART PAGE ================= */
 
@@ -488,7 +313,34 @@ h1{
     background:#ca6f1e;
 }
 
+/* Button */
+.login-box button{
+    width:100%;
+    padding:10px;
+    background:#27ae60;
+    color:white;
+    border:none;
+    border-radius:6px;
+}
 
+.login-box button:hover{
+    background:#1e8449;
+}
+/* Label above input */
+.login-box label{
+    display:block;
+    text-align:left;
+    font-weight:bold;
+    margin-top:10px;
+    margin-bottom:5px;
+    color:#333;
+}
 
-
-
+/* Input spacing */
+.login-box input{
+    width:300px;
+    padding:10px;
+    border-radius:6px;
+    border:1px solid #ccc;
+    margin-bottom:15px;
+}
