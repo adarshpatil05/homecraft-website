@@ -398,7 +398,95 @@ h1{
     width:320px;
     margin:auto;
 }
+/* ================= CART PAGE ================= */
 
+.cart-title{
+    text-align:center;
+    font-size:32px;
+    margin:20px 0;
+}
+
+/* Main cart box */
+.cart-box{
+    width:70%;
+    margin:20px auto;
+    background:rgba(255,255,255,0.9);
+    padding:25px;
+    border-radius:10px;
+    box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* Each cart item */
+.cart-item{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #ddd;
+    padding:15px 0;
+}
+
+/* Product image */
+.cart-item img{
+    width:80px;
+    height:80px;
+    object-fit:cover;
+}
+
+/* Product name */
+.cart-details{
+    flex:1;
+    margin-left:15px;
+}
+
+/* Price */
+.cart-price{
+    font-weight:bold;
+    width:80px;
+    text-align:center;
+}
+
+/* Quantity box */
+.cart-qty{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.cart-qty button{
+    padding:5px 10px;
+    background:#ddd;
+    color:#333;
+    border-radius:5px;
+}
+
+.cart-qty span{
+    font-weight:bold;
+}
+
+/* Total section */
+.cart-total{
+    text-align:right;
+    margin-top:20px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* Checkout button */
+.checkout-btn{
+    text-align:right;
+    margin-top:15px;
+}
+
+.checkout-btn button{
+    background:#e67e22;
+    padding:12px 20px;
+    border-radius:6px;
+    font-size:16px;
+}
+
+.checkout-btn button:hover{
+    background:#ca6f1e;
+}
 
 
 
