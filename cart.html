@@ -18,7 +18,7 @@
         <a href="index.html">Home</a>
         <a href="products.html">Products</a>
         <a href="#">Categories</a>
-        <a href="cart.html">Cart</a>
+        <a href="cart.html">Cart (<span id="cart-count-nav">0</span>)</a>
     </nav>
 
     <div class="login-panel">
@@ -33,57 +33,12 @@
     <div class="cart-left">
 
         <div class="cart-header">
-            <h2>Cart (2 products)</h2>
+            <h2>Cart (<span id="cart-count">0</span> products)</h2>
             <span class="clear-cart">Clear cart</span>
         </div>
 
-        <!-- ITEM 1 -->
-        <div class="cart-item">
-
-            <div class="item-left">
-                <img src="images/chair.jpg">
-
-                <div>
-                    <b>Wooden Chair</b>
-                    <p>Furniture</p>
-                </div>
-            </div>
-
-            <div class="qty-box">
-                <button class="minus">-</button>
-                <span class="qty">1</span>
-                <button class="plus">+</button>
-            </div>
-
-            <div class="item-price" data-price="2000">₹2000</div>
-
-            <div class="remove-btn">✖</div>
-
-        </div>
-
-        <!-- ITEM 2 -->
-        <div class="cart-item">
-
-            <div class="item-left">
-                <img src="images/frame.jpg">
-
-                <div>
-                    <b>Wall Frame Decor</b>
-                    <p>Decor</p>
-                </div>
-            </div>
-
-            <div class="qty-box">
-                <button class="minus">-</button>
-                <span class="qty">1</span>
-                <button class="plus">+</button>
-            </div>
-
-            <div class="item-price" data-price="800">₹800</div>
-
-            <div class="remove-btn">✖</div>
-
-        </div>
+        <!-- 🔥 Dynamic items -->
+        <div id="cart-container"></div>
 
     </div>
 
@@ -101,7 +56,7 @@
 
         <div class="summary-row">
             <span>Subtotal</span>
-            <span id="subtotal">₹2800</span>
+            <span id="subtotal">₹0</span>
         </div>
 
         <div class="summary-row">
@@ -111,7 +66,7 @@
 
         <div class="summary-row total">
             <b>Total</b>
-            <b id="total">₹2800</b>
+            <b id="total">₹0</b>
         </div>
 
         <button class="checkout-btn">Continue to checkout</button>
@@ -123,71 +78,104 @@
 <!-- ================= JAVASCRIPT ================= -->
 <script>
 
-const plusBtns = document.querySelectorAll(".plus");
-const minusBtns = document.querySelectorAll(".minus");
-const removeBtns = document.querySelectorAll(".remove-btn");
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+const container = document.getElementById("cart-container");
 const subtotalEl = document.getElementById("subtotal");
 const totalEl = document.getElementById("total");
+const cartCount = document.getElementById("cart-count");
 const clearCartBtn = document.querySelector(".clear-cart");
 
-// 🔥 Update Total
-function updateTotal() {
+// 🔥 Render cart
+function renderCart() {
+
+    container.innerHTML = "";
     let total = 0;
 
-    document.querySelectorAll(".cart-item").forEach(item => {
-        const price = parseInt(item.querySelector(".item-price").dataset.price);
-        const qty = parseInt(item.querySelector(".qty").innerText);
+    cartCount.innerText = cart.length;
 
-        total += price * qty;
+    cart.forEach((item, index) => {
+
+        total += item.price * item.quantity;
+
+        container.innerHTML += `
+        <div class="cart-item">
+
+            <div class="item-left">
+                <img src="${item.image}">
+                <div>
+                    <b>${item.name}</b>
+                </div>
+            </div>
+
+            <div class="qty-box">
+                <button onclick="decreaseQty(${index})">-</button>
+                <span>${item.quantity}</span>
+                <button onclick="increaseQty(${index})">+</button>
+            </div>
+
+            <div class="item-price">₹${item.price}</div>
+
+            <div class="remove-btn" onclick="removeItem(${index})">✖</div>
+
+        </div>
+        `;
     });
 
     subtotalEl.innerText = "₹" + total;
     totalEl.innerText = "₹" + total;
 }
 
-// ➕ PLUS
-plusBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-        let qtyEl = btn.parentElement.querySelector(".qty");
-        let qty = parseInt(qtyEl.innerText);
-        qty++;
-        qtyEl.innerText = qty;
-        updateTotal();
-    });
-});
+// ➕ Increase
+function increaseQty(index){
+    cart[index].quantity++;
+    saveCart();
+}
 
-// ➖ MINUS
-minusBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-        let qtyEl = btn.parentElement.querySelector(".qty");
-        let qty = parseInt(qtyEl.innerText);
+// ➖ Decrease
+function decreaseQty(index){
+    if(cart[index].quantity > 1){
+        cart[index].quantity--;
+    }
+    saveCart();
+}
 
-        if (qty > 1) {
-            qty--;
-            qtyEl.innerText = qty;
-            updateTotal();
-        }
-    });
-});
+// ❌ Remove
+function removeItem(index){
+    cart.splice(index,1);
+    saveCart();
+}
 
-// ❌ REMOVE ITEM
-removeBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-        btn.closest(".cart-item").remove();
-        updateTotal();
-    });
-});
+// 💾 Save
+function saveCart(){
+    localStorage.setItem("cart", JSON.stringify(cart));
+    renderCart();
+}
 
-// 🧹 CLEAR CART
+// 🧹 Clear Cart
 clearCartBtn.addEventListener("click", () => {
-    document.querySelectorAll(".cart-item").forEach(item => item.remove());
-    updateTotal();
+    localStorage.removeItem("cart");
+    cart = [];
+    renderCart();
 });
 
-// INITIAL LOAD
-updateTotal();
+// Load
+renderCart();
+
+function updateCartCount(){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    let count = 0;
+    cart.forEach(item => {
+        count += item.quantity;
+    });
+
+    document.getElementById("cart-count-nav").innerText = count;
+}
+
+updateCartCount();
 
 </script>
 
 </body>
-</html> 
+</html>

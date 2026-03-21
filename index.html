@@ -20,7 +20,7 @@
         <a href="index.html">Home</a>
         <a href="products.html">Products</a>
         <a href="#">Categories</a>
-        <a href="cart.html">Cart</a>
+        <a href="cart.html">Cart (<span id="cart-count-nav">0</span>)</a>
     </nav>
 
     <div class="login-panel">
@@ -104,5 +104,20 @@
     <p class="footer-bottom">© 2026 HomeCraft | All Rights Reserved</p>
 
 </footer>
+
+<script>
+function updateCartCount(){
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    
+    let count = 0;
+    cart.forEach(item => {
+        count += item.quantity;
+    });
+
+    document.getElementById("cart-count-nav").innerText = count;
+}
+
+updateCartCount();
+</script>
 </body>
 </html>
