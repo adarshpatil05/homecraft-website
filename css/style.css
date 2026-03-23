@@ -504,3 +504,73 @@ button:hover{
 .checkout-btn:hover{
     background:#333;
 }
+/* ================= RESPONSIVE DESIGN ================= */
+
+/* Tablet */
+@media (max-width: 1024px){
+
+    .product-grid{
+        flex-wrap: wrap;
+        gap:20px;
+    }
+
+    .cart-wrapper{
+        flex-direction: column;
+        width:90%;
+        margin:auto;
+    }
+
+    .cart-left, .cart-right{
+        width:100%;
+    }
+
+}
+
+/* Mobile */
+@media (max-width: 768px){
+
+    .navbar{
+        flex-direction: column;
+        align-items: center;
+        gap:10px;
+    }
+
+    .nav-links{
+        display:flex;
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero{
+        height:250px;
+        padding:20px;
+    }
+
+    .hero-text h1{
+        font-size:28px;
+    }
+
+    .product-grid{
+        flex-direction: column;
+        align-items:center;
+    }
+
+    .product-card{
+        width:90%;
+    }
+
+    .cart-item{
+        flex-direction: column;
+        gap:10px;
+        text-align:center;
+    }
+
+    .qty-box{
+        justify-content:center;
+    }
+
+    .cart-right{
+        margin-top:20px;
+    }
+
+}
