@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Checkout - HomeCraft</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+    <div class="logo">
+        <img src="images/logo.png" width="30">
+        <span>HomeCraft</span>
+    </div>
+
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+
+    <div class="login-panel">
+        <a href="login.html">👤 Login</a>
+    </div>
+</header>
+
+<h1 style="text-align:center;">Checkout</h1>
+
+<div class="checkout-container">
+
+    <!-- LEFT: FORM -->
+    <div class="checkout-form">
+
+        <h2>Shipping Details</h2>
+
+        <label>Name</label>
+        <input type="text" placeholder="Enter your name">
+
+        <label>Address</label>
+        <input type="text" placeholder="Enter your address">
+
+        <label>City</label>
+        <input type="text" placeholder="Enter your city">
+
+        <label>Payment Method</label>
+        <select>
+            <option>Cash on Delivery</option>
+            <option>UPI</option>
+            <option>Card</option>
+        </select>
+
+        <button onclick="placeOrder()">Place Order</button>
+
+    </div>
+
+    <!-- RIGHT: ORDER SUMMARY -->
+    <div class="checkout-summary">
+
+        <h2>Order Summary</h2>
+
+        <div id="order-items"></div>
+
+        <hr>
+
+        <h3>Total: ₹<span id="final-total">0</span></h3>
+
+    </div>
+
+</div>
+
+<!-- ================= JAVASCRIPT ================= -->
+<script>
+
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+let container = document.getElementById("order-items");
+let total = 0;
+
+// Show items
+cart.forEach(item => {
+    total += item.price * item.quantity;
+
+    container.innerHTML += `
+        <p>${item.name} (x${item.quantity}) - ₹${item.price * item.quantity}</p>
+    `;
+});
+
+document.getElementById("final-total").innerText = total;
+
+// Place Order
+function placeOrder(){
+
+    if(cart.length === 0){
+        alert("Cart is empty!");
+        return;
+    }
+
+    alert("Order placed successfully 🎉");
+
+    localStorage.removeItem("cart");
+    window.location.href = "index.html";
+}
+
+</script>
+
+</body>
+</html>

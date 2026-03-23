@@ -72,7 +72,7 @@
             <b id="total">₹0</b>
         </div>
 
-        <button class="checkout-btn">Continue to checkout</button>
+        <button class="checkout-btn" onclick="goToCheckout()">Continue to checkout</button>
 
     </div>
 
@@ -183,6 +183,10 @@ function updateCartCount(){
 }
 
 updateCartCount();
+
+function goToCheckout(){
+    window.location.href = "checkout.html";
+}
 
 </script>
 
