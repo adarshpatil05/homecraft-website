@@ -20,6 +20,7 @@
         <a href="products.html">Products</a>
         <a href="#">Categories</a>
         <a href="cart.html">Cart (<span id="cart-count-nav">0</span>)</a>
+        <input type="text" id="search" placeholder="Search..." onkeyup="searchProduct()">
     </nav>
 
     <div class="login-panel">
@@ -37,10 +38,10 @@
         <img src="images/chair.jpg" width="200">
         <h3>Wooden Chair</h3>
         <p>₹2000</p>
-        <button onclick="addToCart('Wooden Chair', ₹2000, 'images/chair.jpg')">
+        <button onclick="addToCart('Wooden Chair', 2000, 'images/chair.jpg')">
             Add to Cart
         </button>
-        <button onclick="addToWishlist('Wooden Chair', ₹2000)">
+        <button onclick="addToWishlist('Wooden Chair', 2000)">
             ❤️
         </button>
     </div>
@@ -49,10 +50,10 @@
         <img src="images/frame.jpg" width="200">
         <h3>Wall Frame Decor</h3>
         <p>₹800</p>
-        <button onclick="addToCart('Wall Frame Decor', ₹800, 'images/frame.jpg')">
+        <button onclick="addToCart('Wall Frame Decor', 800, 'images/frame.jpg')">
             Add to Cart
         </button>
-        <button onclick="addToWishlist('Wall Frame Decor', ₹800)">
+        <button onclick="addToWishlist('Wall Frame Decor', 800)">
             ❤️
         </button>
     </div>
@@ -61,10 +62,10 @@
         <img src="images/shelf.jpg" width="200">
         <h3>DIY Shelf Kit</h3>
         <p>₹1500</p>
-        <button onclick="addToCart('DIY Shelf Kit', ₹1500, 'images/shelf.jpg')">
+        <button onclick="addToCart('DIY Shelf Kit', 1500, 'images/shelf.jpg')">
             Add to Cart
         </button>
-        <button onclick="addToWishlist('DIY Shelf Kit', ₹1500)">
+        <button onclick="addToWishlist('DIY Shelf Kit', 1500)">
             ❤️
         </button>
     </div>
@@ -133,6 +134,23 @@ function updateCartCount(){
             showToast("Already in wishlist ❗");
     }
 }
+
+
+function searchProduct(){
+    let input = document.getElementById("search").value.toLowerCase();
+    let products = document.querySelectorAll(".product-card");
+
+    products.forEach(product => {
+        let name = product.querySelector("h3").innerText.toLowerCase();
+
+        if(name.includes(input)){
+            product.style.display = "block";
+        } else {
+            product.style.display = "none";
+        }
+    });
+}
+
 </script>
 
 </body>
