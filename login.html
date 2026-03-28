@@ -1,37 +1,53 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+    <title>Login - HomeCraft</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
 <div class="login-hero">
-
     <div class="overlay"></div>
 
-    <div class="login-content">
+    <div class="login-box">
 
-        <h1>HomeCraft</h1>
-        <h2>Login to Your Account</h2>
-        <p>Welcome back! Login to continue shopping for DIY kits, furniture and home decor products.</p>
+        <h2>Login Form</h2>
 
-        <div class="login-box">
+        <input type="email" id="email" placeholder="Email Address">
+        <input type="password" id="password" placeholder="Password">
 
-            <label>Email:-</label>
-            <input type="email" placeholder="Enter your email">
+        <p class="forgot">Forgot password?</p>
 
-            <label>Password:-</label>
-            <input type="password" placeholder="Enter your password">
+        <button onclick="login()">Login</button>
 
-            <button>Login</button>
-
-        </div>
+        <p class="switch">
+            Create an account? <a href="signup.html">Signup now</a>
+        </p>
 
     </div>
-
 </div>
+
+<script>
+function login(){
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+
+    let user = JSON.parse(localStorage.getItem("user"));
+
+    if(!user){
+        alert("No account found! Signup first ❗");
+        return;
+    }
+
+    if(email === user.email && password === user.password){
+        alert("Login successful ✅");
+        window.location.href = "index.html";
+    } else {
+        alert("Invalid credentials ❌");
+    }
+}
+</script>
 
 </body>
 </html>
