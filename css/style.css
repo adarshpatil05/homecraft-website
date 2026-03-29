@@ -674,3 +674,67 @@ button:hover{
     margin-top:10px;
     font-size:13px;
 }
+
+.combo-box{
+    background: #fff;
+    padding: 20px;
+    margin: 20px auto;
+    border-radius: 10px;
+    width: 80%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.combo-products{
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.product-card.small{
+    width: 150px;
+}
+
+.combo-box button{
+    background: green;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.combo-box{
+    background: white;
+    padding: 20px;
+    margin: 30px auto;
+    border-radius: 12px;
+    width: 80%;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.combo-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.combo-products{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin: 15px 0;
+}
+
+.product-card.small{
+    width: 140px;
+}
+
+.combo-box button{
+    background: green;
+    color: white;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}

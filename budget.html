@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Budget Setup - HomeCraft</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<!-- Navbar -->
+<header class="navbar">
+    <div class="logo">
+        <img src="images/logo.png" width="30">
+        <span>HomeCraft</span>
+    </div>
+
+    <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="budget.html">Budget</a>
+        <a href="cart.html">Cart</a>
+    </nav>
+</header>
+
+<h1 style="text-align:center;">Budget Room Setup 💡</h1>
+
+<div style="text-align:center; margin:20px;">
+    <input type="number" id="budgetInput" placeholder="Enter your budget (₹)">
+    <button onclick="generateSetup()">Generate Setup</button>
+</div>
+
+<div id="result" class="products"></div>
+
+<script>
+
+function generateSetup(){
+
+    let budget = parseInt(document.getElementById("budgetInput").value);
+    let result = document.getElementById("result");
+
+    result.innerHTML = "";
+
+    if(!budget){
+        alert("Enter budget!");
+        return;
+    }
+
+    let products = [
+        {name:"Wooden Chair", price:2000, img:"images/chair.jpg"},
+        {name:"Wall Frame Decor", price:800, img:"images/frame.jpg"},
+        {name:"DIY Shelf Kit", price:1500, img:"images/shelf.jpg"}
+    ];
+
+    let n = products.length;
+    let count = 1;
+
+    for(let i = 1; i < (1 << n); i++){
+
+        let combo = [];
+        let total = 0;
+
+        for(let j = 0; j < n; j++){
+            if(i & (1 << j)){
+                combo.push(products[j]);
+                total += products[j].price;
+            }
+        }
+
+        if(total <= budget){
+
+            result.innerHTML += `
+            <div class="combo-box">
+
+                <div class="combo-header">
+                    <h3>
+                        Combination ${count}
+                        ${total === budget ? "🔥 BEST MATCH" : ""}
+                    </h3>
+                    <h2>₹${total}</h2>
+                </div>
+
+                <div class="combo-products">
+                    ${combo.map(p => `
+                        <div class="product-card small">
+                            <img src="${p.img}">
+                            <h4>${p.name}</h4>
+                            <p>₹${p.price}</p>
+                        </div>
+                    `).join("")}
+                </div>
+
+                <button onclick='addComboToCart(${JSON.stringify(combo)})'>
+                    Add This Combo 🛒
+                </button>
+
+            </div>
+            `;
+
+            count++;
+        }
+    }
+}
+function addComboToCart(combo){
+
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    combo.forEach(item => {
+
+        let found = cart.find(p => p.name === item.name);
+
+        if(found){
+            found.quantity++;
+        } else {
+            cart.push({
+                name: item.name,
+                price: item.price,
+                image: item.img,
+                quantity: 1
+            });
+        }
+
+    });
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    alert("Combo added to cart 🛒");
+}
+
+
+</script>
+
+</body>
+</html>
